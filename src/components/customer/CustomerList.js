@@ -6,10 +6,15 @@ export default () => {
   const { customers } = useContext(CustomersContext);
 
   return (
-    <div className="customers">
-      {customers.map((cus) => (
-        <Customer key={cus.id} customers={cus} />
-      ))}
-    </div>
+    <>
+      <div>
+        <h3>Customers</h3>
+      </div>
+      <div className="customers">
+        {customers.map((cus) => (
+          <Customer key={cus.id} customers={cus} />
+        ))}
+      </div>
+    </>
   );
 };

@@ -14,6 +14,9 @@ export default () => {
 
   return (
     <>
+      <div>
+        <h3>Employees</h3>
+      </div>
       <div className="fakeLink href" onClick={toggle}>
         New Employee
       </div>

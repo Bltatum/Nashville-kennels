@@ -16,9 +16,13 @@ export default () => {
 
   return (
     <>
+      <div>
+        <h3>Animals</h3>
+      </div>
       <div className="fakeLink href" onClick={toggle}>
         Make Appointment
       </div>
+
       <div className="animals">
         {animals.map((animal) => {
           const owner = customers.find((c) => c.id === animal.customerId);

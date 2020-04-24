@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CustomerList from "./customer/CustomerList";
 import { CustomerProvider } from "./customer/CustomerProvider";
 import { EmployeesProvider } from "./employee/EmployeeProvider";
@@ -7,45 +7,42 @@ import LocationList from "./location/LocationList";
 import { LocationProvider } from "./location/LocationProvider";
 import { AnimalProvider } from "./animal/AnimalProvider";
 import AnimalList from "./animal/AnimalList";
+import { SearchBar } from "./search/SearchBar";
+import { SearchResults } from "./search/SearchResults";
+import "./Layout.css";
 import "./customer/Customer.css";
 import "./employee/Employee.css";
 import "./location/Location.css";
 import "./animal/Animals.css";
 import "./employee/EmployeeForm";
 import "./animal/AnimalForm";
+import "./Kennel.css";
 
-export default () => (
-  <>
-    <h2>Nashville Kennels</h2>
-    <small>Loving care when you're not there.</small>
-    <address>
-      <div>Visit Us at the Nashville North Location</div>
-      <div>500 Puppy Way</div>
-    </address>
-    <h2>Animals</h2>
-    <AnimalProvider>
-      <LocationProvider>
-        <CustomerProvider>
-          <AnimalList />
-        </CustomerProvider>
-      </LocationProvider>
-    </AnimalProvider>
-    <h2>Employees</h2>
-    <EmployeesProvider>
-      <LocationProvider>
-        <EmployeeList />
-      </LocationProvider>
-    </EmployeesProvider>
-    <h2>Locations</h2>
-    <LocationProvider>
+export default () => {
+  const [searchTerms, setTerms] = useState(null);
+
+  return (
+    <div className="mainContainer">
       <AnimalProvider>
-        <LocationList />
+        <CustomerProvider>
+          <EmployeesProvider>
+            <LocationProvider>
+              <div className="searchContainer">
+                <SearchBar setTerms={setTerms} />
+                <SearchResults searchTerms={searchTerms} />
+              </div>
+              <div className="dataContainer">
+                <h2>Nashville Kennels</h2>
+                <small>Loving care when you're not there.</small>
+                <LocationList />
+                <AnimalList />
+                <CustomerList />
+                <EmployeeList />
+              </div>
+            </LocationProvider>
+          </EmployeesProvider>
+        </CustomerProvider>
       </AnimalProvider>
-      <EmployeesProvider></EmployeesProvider>
-    </LocationProvider>
-    <h2>Customers</h2>
-    <CustomerProvider>
-      <CustomerList />
-    </CustomerProvider>
-  </>
-);
+    </div>
+  );
+};
