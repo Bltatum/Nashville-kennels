@@ -1,16 +1,13 @@
 import React, { useContext, useRef } from "react";
 import { AnimalsContext } from "./AnimalProvider";
 import { LocationContext } from "../location/LocationProvider";
-import { CustomersContext } from "../customer/CustomerProvider";
 
 export default (props) => {
   const { addAnimals } = useContext(AnimalsContext);
   const { locations } = useContext(LocationContext);
-  const { customers } = useContext(CustomersContext);
 
   const name = useRef();
   const location = useRef();
-  const customer = useRef();
   const breed = useRef();
 
   const constructNewAnimal = () => {
