@@ -23,6 +23,15 @@ export const EmployeesProvider = (props) => {
       body: JSON.stringify(employee),
     }).then(getEmployees);
   };
+  const updateEmployee = (employee) => {
+    return fetch(`http://localhost:8088/Employees/${employee.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(employee),
+    }).then(getEmployees);
+  };
 
   /*
         Load all animals when the component is mounted. Ensure that
@@ -41,6 +50,7 @@ export const EmployeesProvider = (props) => {
       value={{
         employees,
         addEmployee,
+        updateEmployee,
       }}
     >
       {props.children}

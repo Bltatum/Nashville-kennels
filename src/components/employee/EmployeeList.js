@@ -14,12 +14,18 @@ export default () => {
 
   return (
     <>
-      <div>
-        <h3>Employees</h3>
-      </div>
-      <div className="fakeLink href" onClick={toggle}>
+      <Button
+        onClick={() => {
+          // check if the user is authenticated
+          const userId = localStorage.getItem("kennel_customer");
+          if (userId) {
+            // If the user is authenticated, show the animal form
+            toggle();
+          }
+        }}
+      >
         New Employee
-      </div>
+      </Button>
 
       <div className="employees">
         {employees.map((emp) => {
